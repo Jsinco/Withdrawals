@@ -1,0 +1,23 @@
+prefix: "&#f7903b&lI&#f7a93b&ln&#f8c23a&lf&#f8db3a&lo &r&8»&#E2E2E2 "
+
+withdrawal-items:
+  EXPERIENCE:
+    material: EXPERIENCE_BOTTLE
+    name: "%amount% &lExperience"
+    lore:
+      - "&7Right click to redeem"
+      - "&7%amount% &lExperience"
+    custom-model-data: 0 # Set to 0 to disable
+    enchant-glint: true
+  MONEY:
+    material: PAPER
+    name: "&#F76A3B&l$%amount% &#f76a3b&lM&#f7863b&lo&#f8a33b&ln&#f8bf3a&le&#f8db3a&ly"
+    lore: ["&7Right click to redeem"]
+    custom-model-data: 0
+    enchant-glint: true
+  POINTS:
+    material: PAPER
+    name: "&#F76A3B&l%amount% &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls&r&f"
+    lore: ["&7Right click to redeem"]
+    custom-model-data: 8999
+    enchant-glint: true

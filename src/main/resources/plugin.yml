@@ -1,0 +1,19 @@
+name: Withdrawals
+version: '${version}'
+main: me.jsinco.withdrawals.Withdrawals
+api-version: '1.20'
+depend: [Vault, PlayerPoints]
+permissions:
+  withdrawals.experience:
+    description: Allows players to withdraw experience
+    default: true
+  withdrawals.money:
+    description: Allows players to withdraw money
+    default: true
+  withdrawals.points:
+    description: Allows players to withdraw points
+    default: true
+commands:
+  withdrawals:
+    description: Withdrawals command
+    aliases: [withdraw]
