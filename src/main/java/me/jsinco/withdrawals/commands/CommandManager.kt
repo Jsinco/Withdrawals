@@ -18,7 +18,7 @@ class CommandManager(val plugin: Withdrawals) : CommandExecutor, TabCompleter {
     init {
         // SubCommands
         subCommands["experience"] = WithdrawExperience()
-        subCommands["money"] = WithdrawMoney()
+        subCommands["balance"] = WithdrawMoney()
         subCommands["solcoins"] = WithdrawPoints()
     }
 

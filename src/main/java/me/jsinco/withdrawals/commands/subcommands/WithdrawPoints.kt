@@ -23,7 +23,7 @@ class WithdrawPoints : SubCommand {
             args[1].toIntOrNull() ?: return
         }
 
-        if (ppAPI.look(player.uniqueId) < amount) {
+        if (ppAPI.look(player.uniqueId) < amount || amount <= 0) {
             player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You do not have enough solcoins to withdraw that amount!"))
             return
         }
