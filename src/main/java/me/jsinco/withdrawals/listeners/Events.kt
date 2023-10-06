@@ -29,18 +29,18 @@ class Events(private val plugin: Withdrawals) : Listener {
         when (currencyType) {
             CurrencyType.EXPERIENCE -> {
                 event.player.exp += withdrawalItem.doubleAmount!!.toFloat()
-                amountRedeemed = withdrawalItem.doubleAmount.toString()
+                amountRedeemed = String.format("%,.2f", withdrawalItem.doubleAmount)
             }
             CurrencyType.MONEY -> {
                 val econ = VaultHook.getEconomy()
                 econ.depositPlayer(event.player, withdrawalItem.doubleAmount!!)
-                amountRedeemed = "$${withdrawalItem.doubleAmount}"
+                amountRedeemed = "$${String.format("%,.2f", withdrawalItem.doubleAmount)}"
             }
 
             CurrencyType.POINTS -> {
                 val ppAPI = PlayerPointsHook.playerPointsAPI
                 ppAPI.give(event.player.uniqueId, withdrawalItem.intAmount!!)
-                amountRedeemed = withdrawalItem.intAmount.toString()
+                amountRedeemed = String.format("%,d", withdrawalItem.intAmount)
             }
             null -> {
                 return
