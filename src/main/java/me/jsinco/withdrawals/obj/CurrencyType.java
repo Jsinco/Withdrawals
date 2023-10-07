@@ -4,7 +4,7 @@ public enum CurrencyType {
 
     EXPERIENCE("experience"),
     MONEY("dollars"),
-    POINTS("solcoins");
+    POINTS("Solcoins");
 
     final String name;
 

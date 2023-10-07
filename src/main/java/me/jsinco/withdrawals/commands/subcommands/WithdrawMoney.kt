@@ -29,9 +29,9 @@ class WithdrawMoney : SubCommand {
 
         econ.withdrawPlayer(player, amount)
         val withdrawalItem = CreateWithdrawalItem(CurrencyType.MONEY, amount)
-        player.inventory.addItem(withdrawalItem.getItem())
+        Util.giveItem(player, withdrawalItem.getItem())
 
-        player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew $amount money!"))
+        player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew &a$${String.format("%,.2f", amount)} &#E2E2E2dollars!"))
     }
 
     override fun tabComplete(plugin: Withdrawals, sender: CommandSender, args: Array<out String>): List<String>? {

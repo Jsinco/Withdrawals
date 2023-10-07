@@ -34,13 +34,13 @@ class Events(private val plugin: Withdrawals) : Listener {
             CurrencyType.MONEY -> {
                 val econ = VaultHook.getEconomy()
                 econ.depositPlayer(event.player, withdrawalItem.doubleAmount!!)
-                amountRedeemed = "$${String.format("%,.2f", withdrawalItem.doubleAmount)}"
+                amountRedeemed = "&a$${String.format("%,.2f", withdrawalItem.doubleAmount)}"
             }
 
             CurrencyType.POINTS -> {
                 val ppAPI = PlayerPointsHook.playerPointsAPI
                 ppAPI.give(event.player.uniqueId, withdrawalItem.intAmount!!)
-                amountRedeemed = String.format("%,d", withdrawalItem.intAmount)
+                amountRedeemed = "&#f76a3b${String.format("%,d", withdrawalItem.intAmount)}"
             }
             null -> {
                 return
@@ -48,6 +48,7 @@ class Events(private val plugin: Withdrawals) : Listener {
         }
 
         event.item!!.amount -= 1
-        event.player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You redeemed $amountRedeemed ${currencyType.currencyName}!"))
+        event.player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You redeemed $amountRedeemed &#E2E2E2${currencyType.currencyName}!"))
+        event.isCancelled = true
     }
 }

@@ -24,15 +24,15 @@ class WithdrawPoints : SubCommand {
         }
 
         if (ppAPI.look(player.uniqueId) < amount || amount <= 0) {
-            player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You do not have enough solcoins to withdraw that amount!"))
+            player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You do not have enough Solcoins to withdraw that amount!"))
             return
         }
 
         ppAPI.take(player.uniqueId, amount)
         val withdrawalItem = CreateWithdrawalItem(CurrencyType.POINTS, amount.toDouble())
-        player.inventory.addItem(withdrawalItem.getItem())
+        Util.giveItem(player, withdrawalItem.getItem())
 
-        player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew $amount solcoins!"))
+        player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew &#f76a3b${String.format("%,d", amount)} &#E2E2E2Solcoins!"))
     }
 
     override fun tabComplete(plugin: Withdrawals, sender: CommandSender, args: Array<out String>): List<String>? {

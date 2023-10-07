@@ -2,6 +2,8 @@ package me.jsinco.withdrawals.util
 
 import me.jsinco.withdrawals.Withdrawals
 import net.md_5.bungee.api.ChatColor
+import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
 object Util {
 
@@ -42,4 +44,16 @@ object Util {
         }
         return coloredList
     }
+
+    fun giveItem(player: Player, item: ItemStack?) {
+        for (i in 0..35) {
+            if (player.inventory.getItem(i) == null || player.inventory.getItem(i)!!.isSimilar(item)) {
+                player.inventory.addItem(item)
+                break
+            } else if (i == 35) {
+                player.world.dropItem(player.location, item!!)
+            }
+        }
+    }
+
 }
