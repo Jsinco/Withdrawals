@@ -22,8 +22,11 @@ class WithdrawMoney : SubCommand {
             args[1].toDoubleOrNull() ?: return
         }
 
-        if (econ.getBalance(player) < amount || amount <= 0) {
+        if (econ.getBalance(player) < amount) {
             player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You do not have enough money to withdraw that amount!"))
+            return
+        } else if (amount < 1) {
+            player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You must withdraw at least $1!"))
             return
         }
 
