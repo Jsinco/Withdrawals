@@ -29,12 +29,14 @@ class WithdrawMoney : SubCommand {
             player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You must withdraw at least $1!"))
             return
         }
-
-        econ.withdrawPlayer(player, amount)
         val withdrawalItem = CreateWithdrawalItem(CurrencyType.MONEY, amount)
-        Util.giveItem(player, withdrawalItem.getItem())
 
-        player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew &a$${String.format("%,.2f", amount)} &#E2E2E2dollars!"))
+        if (econ.withdrawPlayer(player, amount).transactionSuccess()) {
+            player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}You withdrew &a$${String.format("%,.2f", amount)} &#E2E2E2dollars!"))
+            Util.giveItem(player, withdrawalItem.getItem())
+        } else {
+            player.sendMessage(Util.colorcode("${plugin.config.getString("prefix")}An error occurred while withdrawing your money!"))
+        }
     }
 
     override fun tabComplete(plugin: Withdrawals, sender: CommandSender, args: Array<out String>): List<String>? {
